@@ -1,19 +1,41 @@
+<!-- new user form -->
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blog4</title>
+  <title>Blog2</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-	<div id="user_nav">
-		<%= link_to "Register", new_user_path %><br>
-		<%= link_to "Current Users", users_index_path %>
-	</div>
-
 <%= yield %>
+
+<!-- tells you who is logged in -->
+
+<div id="user_nav">
+
+  <% if current_user %>
+    Logged in as <%= current_user.email %>
+    
+  <br>
+    <%= link_to "Log out", logout_path %>
+  </br>
+
+  
+  <% else %>
+    <%= link_to "Sign Up", sign_up_path %> or
+    <%= link_to "Log In", login_path %>
+  <br>
+    <%= link_to "Home", root_path %>
+  </br>
+  <% end %>
+</div>
+
+
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% end %>
 
 </body>
 </html>

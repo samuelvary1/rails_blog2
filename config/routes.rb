@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'user_sessions/new'
+
   get 'users/new'
 
   get 'users/edit'
@@ -16,15 +18,17 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :user_sessions
+
   root 'welcome#index'
 
   get "update_user" => "users#edit", :as => "update_user"
 
   get "users_index" => "users#index", :as => "users_index"
 
-  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "logout" => "user_sessions#destroy", :as => "logout"
 
-  get "log_in" => "sessions#new", :as => "log_in"
+  get "login" => "user_sessions#new", :as => "login"
 
   get "sign_up" => "users#new", :as => "sign_up"
 

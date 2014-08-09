@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
   
   # before_save :encrypt_password
 
-  has_secure_password
-
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
   validates_presence_of :email
