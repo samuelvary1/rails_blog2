@@ -1,19 +1,22 @@
+<center><h2>Sam's Ruby on Rails Journal</h2></center>
+
+<center><%= link_to "New article", new_article_path %></center>
+<center><%= link_to "Home", root_path %></center>
+
 <table>
   <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th colspan="2"></th>
+
+    <th colspan="3"></th>
   </tr>
  
 <% @articles.each do |article| %>
   <tr>
     <td><%= article.title %></td>
-    <td><%= article.text %></td>
-    <td><%= link_to 'Show', article_path(article) %></td>
-    <td><%= link_to 'Edit', edit_article_path(article) %></td>
-    <td><%= link_to 'Destroy', article_path(article), method: :delete, data: { confirm: "Are you sure?" } %></td>
+    <td><%= simple_format article.text %></td>
+    <td><%= link_to "Show", article_path(article) %></td>
+    <td><%= link_to "Edit", edit_article_path(article) %></td>
+    <td><%= link_to "Delete", article_path(article),
+                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
-
-<%= link_to 'Home', root_path %>

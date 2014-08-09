@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def index
-		@articles = Article.all
+		@articles = Article.order('created_at DESC')
 	end
 
 	def edit 
